@@ -2,5 +2,4 @@ django
 spotipy
 sklearn
 pandas
-json
 dateutil
