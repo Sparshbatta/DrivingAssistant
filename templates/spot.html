@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Spot
+{% endblock %}
+      
+{% block body %}
+    <div class="jumbotron ">
+    <h3 class="text-center">Listen to your favourite songs just on a single click.....</h3>
+    </div>
+    <!-- <p>{{results}}</p> -->
+    {% if results %}
+    <div class="container text-center" style="padding:30px">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for x in results %}
+        <div class="col">
+          <div class="card shadow-sm">
+            <img class="x" src="{{x.album.images.0.url}}" width=350px" height="350px">
+            <div class="card-body">
+              <h5 class="card-title">{{x.name}}</h5>
+              <p class="card-text">Play Music</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a type="button" class="btn btn-sm btn-outline-primary" href="{{x.preview_url}}" target="_blank">Play</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        </div>
+        </div>
+        {% endif %}
+    
+
+      {% endblock %}

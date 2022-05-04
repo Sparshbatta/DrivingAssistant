@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<style>
+  .x{
+    width: 340px;
+    height: 335px;
+    border-radius: 10px;
+  }
+</style>
+<h1 class="text-center" style="margin:40px">Available Options</h1>
+<div class="container text-center" style="padding:30px">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <div class="col">
+      <div class="card shadow-sm">
+        <img class="x" src="{% static 'img/default_map_mobile.jpg' %}" width=350px" height="350px">
+        <div class="card-body">
+          <h5 class="card-title">TRACING</h5>
+          <p class="card-text">Trace your current location or a random one.</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <a type="button" class="btn btn-sm btn-outline-primary" href="{% url 'trace' request.user.id %}">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card shadow-sm">
+        <img class="x" src="{% static 'img/weather.jpg' %}" width=350px" height="350px">
+        <div class="card-body">
+          <h5 class="card-title">WEATHER FORECAST</h5>
+          <p class="card-text">Analyze the upcoming weather conditions in your area.</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <a type="button" class="btn btn-sm btn-outline-primary"
+                href="{% url 'weather_prediction' request.user.id %}">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card shadow-sm">
+        <img class="x" src="{% static 'img/speed.jpeg' %}" width=350px" height="350px">
+        <div class="card-body">
+          <h5 class="card-title">SPEED LIMIT</h5>
+          <p class="card-text">Check your threshold safe speed limit to ensure safe driving.</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <a type="button" class="btn btn-sm btn-outline-primary"
+                href="{% url 'speed_limit' request.user.id %}">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col mt-4">
+      <div class="card shadow-sm">
+        <img class="x" src="{% static 'img/music.jpg' %}" width=340px" height="350px">
+        <div class="card-body">
+          <h5 class="card-title">Music Sytem</h5>
+          <p class="card-text">Get a personalized music system</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <a type="button" class="btn btn-sm btn-outline-primary"
+                href="{% url 'play_music' request.user.id %}">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

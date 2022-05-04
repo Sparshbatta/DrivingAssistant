@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Weather Prediction
+{% endblock %}
+{% block body %}
+<style>
+    .table-skeleton{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: end;
+        margin-top:40px;
+    }
+    
+</style>
+<div class="container table-skeleton">
+  <div class="jumbotron" style="padding:40px 40px;">
+    <h1 class="display-4">Your current location</h1>
+  <hr class="my-4">
+  
+  <div class="text-center">
+    <p class="lead">{{city}}</p>
+    <a role="button" class="btn btn-success" id="mainBtn" href="{% url 'safe_drive_predict' request.user.id %}">Predict Safe Driving</a>
+  </div>  
+</div>
+<table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">S.No.</th>  
+        <th scope="col">Main</th>
+        <th scope="col">Weather Desc.</th>
+        <th scope="col">Temp.(Kelvin)</th>
+        <th scope="col">Pressure (atm)</th>
+        <th scope="col">Visibility (units)</th>
+        <th scope="col">Cloud Density (%)</th>
+        <th scope="col">Wind Speed (Kmph)</th>
+        <th scope="col">Time Noted (Date/Time)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for weather_stat in weather_stat_queryset %}
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{weather_stat.main_stat}}</td>
+        <td>{{weather_stat.weather_desc}}</td>
+        <td>{{weather_stat.temperature}}</td>
+        <td>{{weather_stat.pressure}}</td>
+        <td>{{weather_stat.visibility}}</td>
+        <td>{{weather_stat.cloud_density}}</td>
+        <td>{{weather_stat.wind_speed}}</td>
+        <td>{{weather_stat.time_noted}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<script src="api.openweathermap.org/data/2.5/forecast/daily?lat=35&lon=139&cnt=10&appid={API key}"></script>
+{% endblock %}

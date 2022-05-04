@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Examine Results
+{% endblock %}
+{% block body %}
+<div class="jumbotron m-5">
+    <h1 class="display-4">Predicted Results</h1>
+    <hr class="my-4">
+    <p class="lead">Weather - {{main_stat}}</p>
+    <p class="lead">Temperature - {{temperature}} K</p>
+    <p class="lead">Cloud Density - {{clouds}}%</p>
+    <p class="lead">Visibility - {{visibility}}</p>
+    <p class="lead">Pressure - {{pressure}} atm</p>
+    {% if main_stat == 'Clouds' %}
+    <img src="{% static 'img/clouds.jpg' %}" alt="" height="300px" width="300px" style="border:2px solid black">
+    {% elif main_stat == 'Rainy' %}
+    <img src="{% static 'img/rainy.jpg' %}" alt="" height="300px" width="300px" style="border:2px solid black">
+    {% else %}
+    <img src="{% static 'img/clear.jpg' %}" alt="">
+    {% endif %}
+    {% if visibility < 1000 %}
+    <p>Some foggy weather can be observed</p>
+    {% else %}
+    <p>The view is crystal clear!</p>
+    {% endif %}
+  </div>
+{% endblock %}
